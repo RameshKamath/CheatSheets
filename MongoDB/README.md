@@ -1,13 +1,13 @@
 # MongoDB Cheat Sheet File
 
-**MongoDB** is *NOSQL* Database and doesn't follow strict schema. 
+**MongoDB** is *NOSQL* Database and doesn't follow strict schema.
 
 The `Write/Insert` operations are **faster**, but `Read`, `Update` and `Delete` Operations are **Slower**.
 
 > **Note:** the variables with `<objectName>` should be replaced by appropriately named object.
 
 # Terminologies:
-* `db` - Current Database and can hold many `collections` . 
+* `db` - Current Database and can hold many `collections` .
     > In the mongo shell variable `db` is set to the current database.
 * `collections` -  these can hold multiple JSON `documents` and are place in Databases (`db`).
     > These are  equivalent to tables in relational databases.
@@ -19,7 +19,7 @@ The `Write/Insert` operations are **faster**, but `Read`, `Update` and `Delete` 
 # Databases
 `db`
  | # Collections in Database
- |-`<CollectionName>` 
+ |-`<CollectionName>`
  |        | # Documents in Collection
  |        |-`<Document>`
  |        |-`<Document>`
@@ -32,24 +32,34 @@ The `Write/Insert` operations are **faster**, but `Read`, `Update` and `Delete` 
 
 # Starting MongoDB
 ## Shell
-`mongod` - for server instance.
+`mongod` - for creating server instance.
 
-`mongo` - for client shell
+`mongo` - for client shell.
 
 ---
 
 
 # Database Operations
 `show dbs`- Print a list of all databases on the server.
+> **Note:** New database without any `collections` will not appear with this command.
 
-`use <databaseName>` - Switch current database to `<databaseName>`. (Replace `<databaseName>` with appropriate database name)
+`use <databaseName>` - Switch current database to `<databaseName>` if `<databaseName>` doesn't exist then it creates new database.
+> **Note:** Replace `<databaseName>` with appropriate database name
+
+`db` - Will give currently selected `<databaseName>`.
+
+`db.dropDatabase()` - To drop/delete current database.
 
 `show collections` - Print a list of all collections for current database.
 
-`show profile` - Print the five most recent operations that took 1 millisecond or more. (See [documentation](https://docs.mongodb.com/manual/tutorial/manage-the-database-profiler/) on the database profiler for more information.)
+`db.createCollection('<collectionName>')` - To create New Empty Collection.
+
+`show profile` - Print the five most recent operations that took 1 millisecond or more.
+>See [documentation](https://docs.mongodb.com/manual/tutorial/manage-the-database-profiler/) on the database profiler for more information.
 
 
-`db.stats()` - Prints range of statistics on current database. (Note: It takes time for large database, but for recent versions it will not block)
+`db.stats()` - Prints range of statistics on current database.
+> **Note:** It takes time for large database, but for recent versions it will not block.
 
 `db.<collectionName>.stats()` - Prints range of statistics on `<collectionName>`.
 
@@ -69,35 +79,35 @@ db.<collectionName>.insert({
 **to insert many Documents to `<collectionName>` in `db`.**
 ```
 db.<collectionName>.insertMany([
-                                { 
+                                {
                                     '<Document1Fields1>': <dataValue> ,
-                                    '<Document1Fields2>': <dataValue> 
+                                    '<Document1Fields2>': <dataValue>
                                 },
-                                { 
+                                {
                                     '<Document2Fields1>': <dataValue>,
-                                    '<Document2Fields2>': <dataValue> 
+                                    '<Document2Fields2>': <dataValue>
                                 },
-                            ])   
+                            ])
 ```
 ---
 ## Read/Query:
-Use [Query Operators](http://docs.mongodb.org/manual/reference/operator/query/) as the **Query argument** for `find()` function. 
+Use [Query Operators](http://docs.mongodb.org/manual/reference/operator/query/) as the **Query argument** for `find()` function.
 ```
 db.<collectionName>.find()
 ```
 
-**Examples** for Query operator and other function on `find()` : 
+**Examples** for Query operator and other function on `find()` :
 ```
 db.<collectionName>.find().pretty()
 db.<collectionName>.find({Fields: {$exists: true}})
-db.<collectionName>.find({ type: { $in: [ 'Fields', 'Fields2' ] } } )     
+db.<collectionName>.find({ type: { $in: [ 'Fields', 'Fields2' ] } } )
 db.<collectionName>.find().limit( 5 )
 db.<collectionName>.find().sort( { name: 1 } ).limit( 5 )
 db.<collectionName>.find().skip(5)
 ```
 ---
 
-## Update/Modify: 
+## Update/Modify:
 
 Here we are querying for documents to update and then **`creating new documents`** in its place(old document is replaced).
 ```
@@ -137,7 +147,7 @@ db.<collectionName>.remove( { <specificFields> : '<SepecificValue>' } )
 
         `service mongodb stop`
 
-2. Go to the backup directory (or any directory where you want to store the mongodb backup), and execute the `mongodump` command. 
+2. Go to the backup directory (or any directory where you want to store the mongodb backup), and execute the `mongodump` command.
 
     > Note: The `–dbpath` in `mongodump` indicates the location of the mongodb database files.
 
@@ -150,7 +160,7 @@ db.<collectionName>.remove( { <specificFields> : '<SepecificValue>' } )
         `mongod`
 
 ### Restore
-* Use `mongorestore` to restore from backup directory 
+* Use `mongorestore` to restore from backup directory
 
         `mongorestore backupfolder/`
 
