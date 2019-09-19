@@ -97,7 +97,7 @@ which produces
 `This is a Inline code block`
 
 <!-- Code Blocks -->
-### Code Blocks
+### Code Blocks [*Github*]
 > Note: code syntax highlighting is done when language name is given right after block start
 
 > like: ```language name
@@ -171,7 +171,7 @@ Python
 
 > Note: can keep using '1.' for ordered list mark down will give correct order name.
 
-### Tables
+### Tables [*Github*]
 <!-- Tables -->
 ```
 | First Name   | Last Name   |
@@ -187,7 +187,7 @@ will produce
 | First Name 2 | Last Name 2 |
 
 <!-- Task List -->
-### Task List
+### Task List/CheckBox [*Github*]
 ```
 * [x] Task 1
 * [x] Task 2
