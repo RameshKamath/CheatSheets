@@ -1,4 +1,4 @@
-# This is a Cheat Sheet for Markdown
+# **MarkDown Cheat Sheet File**
 
 > __Note:__ Html tags can be used in Markdown.
 
