@@ -15,6 +15,7 @@ The `Write/Insert` operations are **faster**, but `Read`, `Update` and `Delete` 
 
 * `fields` - These are similar to columns in Relational Database and hold meta data for Stored Data.
 
+## Entity Relationship
 ```
 # Databases
 `db`
