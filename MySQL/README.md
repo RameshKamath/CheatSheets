@@ -1,6 +1,6 @@
 # **MySQL Cheat Sheet File**
 
-**MySQL** is *Relational Database* that uses SQL query language and follows strict Relational schema. 
+**MySQL** is *Relational Database* that uses SQL query language and follows strict Relational schema.
 
 > **Note:** the variables with `<objectName>` should be replaced by appropriately named object.
 
@@ -14,20 +14,20 @@
 
 * `rows` - These are Data fields, the `columns` data of same `rows` can be related.
 
-## Entity Relationship 
+## Entity Relationship
 ```
 `database`
  |
  |   # tables in database
- |-`<table>` 
+ |-`<table>`
  |     |
  |     | #  table with columns and rows
  |     |-`<column>`, `<column>`, ...
  |          | `<row>`    | `<row>`
  |          | `<row>`    | `<row>`
  |          |    .       |    .
- |  
- |-`<table>` 
+ |
+ |-`<table>`
  |     |-`<column>`, `<column>`,...`<foreign key column>`
 ```
 # Starting MySQL
@@ -57,7 +57,10 @@ mysql -u <userName> -p
 
 *   `SHOW DATABASES LIKE <pattern>;` - shows database that match `<pattern>`.
 
-   > Example: `SHOW DATABASES LIKE '%schema';`
+    > Example: `SHOW DATABASES LIKE '%schema';`
+
+* `DESCRIBE <tableName>` - Describes the structure of a `<tableName>`.
+    >**Note:** We can use either DESCRIBE or DESC(both are Case Insensitive).
 
 *   `DROP DATABASE <databaseName>;` - drops a database with name `<databaseName>`.
 
@@ -69,7 +72,7 @@ mysql -u <userName> -p
 Inserts `<values>` into `<fields>` in `<tableName>`.
 ```sql
 INSERT INTO <tableName> ( <field1>, <field2>,...<fieldN> )
-VALUES ( <value1>, <value2>,...<valueN> );  
+VALUES ( <value1>, <value2>,...<valueN> );
 ```
 
 ## Read/Select
@@ -128,9 +131,9 @@ WHERE <constraint_expression>;
 ## Delete
 Is used to delete data from the MySQL table within the database.
 ```sql
-DELETE FROM <tableName>   
+DELETE FROM <tableName>
 WHERE <constraint_expression>;
-```  
+```
 deletes the data in table.
 > WHERE clause is used to target data if not used all data in table will be deleted.
 
